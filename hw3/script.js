@@ -5,32 +5,20 @@ const Emploee = function(employee) {
         }
         Object.defineProperty(this, 'fullInfo', {
           get: function(){
-
             let info = '';
-          
             for (const key in this) {
-
                 if(typeof(this[key]) === 'function') {continue}
-
                 (info.length > 0) ? info += ', ' + key + ' - ' + this[key] : info += '' + key + ' - ' + this[key] 
-           
             } 
             return info;
         },
         set: function(obj){
-
             if(typeof(obj) != 'object') return;
-
             for (const key in obj) {
-
               if(!this[key]) continue;
-
                 this[key] = obj[key];
-
             }
-        }
-
-        
+        }     
     });
 }
 const employeeObj = new Emploee(emplyeeArr[0]);
@@ -83,17 +71,11 @@ console.log('Средняя зарплата всех сотрудников: ',
 // 6 task
 
 const randomEployee = (arr) => {
-
-    let worker;
-    
-    return function getEmployee() {
-        
-        let newInd  = ~~(Math.random() * arr.length);
-     
-        if(!worker) return (worker = arr[newInd]);
-     
-        if(worker != arr[newInd]) return arr[newInd];
-        
+    let worker;   
+    return function getEmployee() {    
+        let newInd  = ~~(Math.random() * arr.length);  
+        if(!worker) return (worker = arr[newInd]);     
+        if(worker != arr[newInd]) return arr[newInd];        
         return getEmployee();
     }
 }
