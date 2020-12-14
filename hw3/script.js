@@ -1,15 +1,37 @@
 // 1 task
-class Emploee {
-    constructor(obj) {
-        for (let key in obj) {
-            this[key] = obj[key]
+const Emploee = function(employee) {
+        for (const key in employee) {
+            this[key] = employee[key]
         }
         Object.defineProperty(this, 'fullInfo', {
-            set: function(value) {
-                return value;
+          get: function(){
+
+            let info = '';
+          
+            for (const key in this) {
+
+                if(typeof(this[key]) === 'function') {continue}
+
+                (info.length > 0) ? info += ', ' + key + ' - ' + this[key] : info += '' + key + ' - ' + this[key] 
+           
+            } 
+            return info;
+        },
+        set: function(obj){
+
+            if(typeof(obj) != 'object') return;
+
+            for (const key in obj) {
+
+              if(!this[key]) continue;
+
+                this[key] = obj[key];
+
             }
-        })
-    }
+        }
+
+        
+    });
 }
 const employeeObj = new Emploee(emplyeeArr[0]);
 console.log(employeeObj)
@@ -29,8 +51,8 @@ let createEmployesFromArr = (arr) => {
     }
     return arrEmploy;
 }
-const emplyeeConstructArr = createEmployesFromArr(emplyeeArr)
-console.log(emplyeeConstructArr)
+const emplyeeConstructArr = createEmployesFromArr(emplyeeArr);
+console.log(emplyeeConstructArr);
 
 // 4 task
 
@@ -56,12 +78,28 @@ const getMiddleSalary = (arr) => {
     }
     return popularitySum / (arrMiddleSalary.length);
 }
-console.log('Средняя зарплата всех сотрудников: ', getMiddleSalary(emplyeeConstructArr))
+console.log('Средняя зарплата всех сотрудников: ', getMiddleSalary(emplyeeConstructArr));
 
 // 6 task
 
-const getRandomEmployee = (arr) => {
-    rand = emplyeeConstructArr[Math.floor(Math.random() * emplyeeConstructArr.length)];
-    return rand;
+const randomEployee = (arr) => {
+
+    let worker;
+    
+    return function getEmployee() {
+        
+        let newInd  = ~~(Math.random() * arr.length);
+     
+        if(!worker) return (worker = arr[newInd]);
+     
+        if(worker != arr[newInd]) return arr[newInd];
+        
+        return getEmployee();
+    }
 }
-console.log(getRandomEmployee(emplyeeConstructArr))
+
+let getRandomEmployee = randomEployee(emplyeeArr);
+
+console.log(getRandomEmployee());
+
+console.log(employeeObj.fullInfo); // 7 task
