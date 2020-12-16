@@ -70,18 +70,11 @@ console.log('Средняя зарплата всех сотрудников: ',
 
 // 6 task
 
-const randomEployee = (arr) => {
-    let worker;   
-    return function getEmployee() {    
-        let newInd  = ~~(Math.random() * arr.length);  
-        if(!worker) return (worker = arr[newInd]);     
-        if(worker != arr[newInd]) return arr[newInd];        
-        return getEmployee();
-    }
+const getrandomEployee = (arr) => {
+    let randomEmployee = Math.round(Math.random()*(arr.length-1));
+        return arr[randomEmployee];
 }
 
-let getRandomEmployee = randomEployee(emplyeeArr);
-
-console.log(getRandomEmployee());
+console.log(getRandomEmployee(emplyeeConstructArr));
 
 console.log(employeeObj.fullInfo); // 7 task
