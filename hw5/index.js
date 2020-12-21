@@ -45,3 +45,25 @@ const getTime = setTime();
 console.log(getTime());
 
 ////4 task
+
+/*
+let myTimer;
+function clock() {
+    timer = setInterval(myClock, 1000);
+    let c = 300;
+
+    function myClock() {
+        --c
+        let seconds = c % 60;
+        let secondsInMinutes = (c - seconds) / 60;
+        let minutes = secondsInMinutes % 60;
+        let hours = (secondsInMinutes - minutes) / 60;
+        console.clear();
+        console.log(hours + ":" + minutes + ":" + seconds)
+        if (c <= 0) {
+            console.log('Timer end');
+        }
+    }
+}
+clock()
+*/
