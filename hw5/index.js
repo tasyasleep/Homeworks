@@ -47,8 +47,7 @@ console.log(getTime());
 ////4 task
 
 /*
-let myTimer;
-function clock() {
+const myTimer = () => {
     timer = setInterval(myClock, 1000);
     let c = 300;
 
@@ -65,5 +64,5 @@ function clock() {
         }
     }
 }
-clock()
+myTimer()
 */
