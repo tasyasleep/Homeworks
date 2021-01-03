@@ -23,7 +23,7 @@ getAllValues = (a) => {
 getAllValues(obj)
 
 /// 4 task
-/*const secondObj = {
+const secondObj = {
     id: 4,
     name: 'Katya'
 }
@@ -38,18 +38,27 @@ const arr1 = [{
     },
 ];
 
-const insertIntoarr = (obj, id) => {
-    for (let key of condidateArr) {
-        if (key._id == id) {
-            let index = condidateArr.indexOf(key);
-            condidateArr.splice(index, 0, obj);
-            return console.log(condidateArr);
+const arr2 = [{
+        id: 1,
+        name: 'Kolya'
+    },
+    {
+        id: 2,
+        name: 'Petya'
+    },
+];
+const insertIntoarr = (nameObj, id) => {
+    for (let item of arr2) {
+        if (item.id === id) {
+            let index = arr2.indexOf(item);
+            arr2.splice(index, 0, nameObj);
+            return console.log(arr2);
         }
     }
 }
-console.log(insertIntoarr(secondObj, 2))
+insertIntoarr(secondObj, 2)
 
-*/
+
 /// 5 task
 
 class Condidate {
